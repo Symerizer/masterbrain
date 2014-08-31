@@ -4,15 +4,15 @@ This was modified directly from a new Sails v0.10.5 application.
 
 The following modifications have been made:
 
-* assets
-    * js
+* ``assets``
+    * ``js``
         * Added ``application.js`` - as the Ember application entry point
         * dependencies
             * Added ``ember.js``, ``handlebars.js``, ``jquery.js`` symlinks (linked to bower_components)
-    * templates
+    * ``templates``
         * Added ``application.hbs`` as the initial Handlebars template
-* tasks
-    * config
+* ``tasks``
+    * ``config``
         * Removed ``jst.js``
         * Added ``handlebars.js``
             * Uses ``grunt-ember-templates`` to build templates
@@ -20,11 +20,11 @@ The following modifications have been made:
             * Output file is ``.tmp/public/template.js``
         * Modified ``sails-linker.js``
             * Modified ``devTpl`` section to reflect output file change to ``.tmp/public/template.js``
-    * register
+    * ``register``
         * Modified ``compileAssets.js`` and ``syncAssets.js`` to point to new Handlebars grunt task instead of JST
     * Modified ``pipeline.js`` to include jQuery and Handlebars dependencies explicitly before the Ember dependency
     * Changed extension on ``templateFilesToInject`` to reflect the change to Handlebars
-* views
+* ``views``
     * Modified ``layout.ejs`` - moved template section below client-side JS section so that dependent libraries are loaded before the templates are loaded.
 * Added ``bower.json``
     * Default dependencies are Ember, Handlebars, and jQuery

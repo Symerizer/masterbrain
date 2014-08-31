@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 	grunt.registerTask('syncAssets', [
-		'hbs:dev',
+		'emberTemplates:dev',
 		'less:dev',
 		'sync:dev',
 		'coffee:dev'

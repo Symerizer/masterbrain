@@ -1,10 +1,10 @@
 {
-  "name": "server-dash",
+  "name": "ember-sails",
   "version": "0.0.1",
   "authors": [
     "Andrew Walton"
   ],
-  "description": "A customizable dashboard to monitor your Linux server.",
+  "description": "A boilerplate for an Ember application with a Sails backend.",
   "main": "app.js",
   "license": "MIT",
   "private": true,

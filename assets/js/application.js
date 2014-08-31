@@ -1,6 +1,6 @@
 $(function(){
     // Setup Ember.
-    window.ServerDash = Ember.Application.create({
+    window.EmberApp = Ember.Application.create({
         LOG_ACTIVE_GENERATION: true
     });
 });

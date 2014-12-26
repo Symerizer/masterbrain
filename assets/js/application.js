@@ -1,6 +1,7 @@
 $(function(){
     // Setup Ember.
-    window.EmberApp = Ember.Application.create({
-        LOG_ACTIVE_GENERATION: true
+    window.App = Ember.Application.create({
+      LOG_ACTIVE_GENERATION: true
     });
-});
+
+  });

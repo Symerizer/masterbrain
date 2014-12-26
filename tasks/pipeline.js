@@ -35,6 +35,7 @@ var jsFilesToInject = [
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/ember/ember.js',
   'js/dependencies/ember-data/ember-data.js',
+  'js/dependencies/ember-data-sails-adapter/ember-data-sails-adapter.js',
   'js/application.js',
 
   // All of the rest of your client-side js files

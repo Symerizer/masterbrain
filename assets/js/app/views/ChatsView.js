@@ -1,4 +1,3 @@
 App.ChatsView = Ember.View.extend({
-	templateName: 'chats',
-	
+	templateName: 'chatbox/chats'
 });

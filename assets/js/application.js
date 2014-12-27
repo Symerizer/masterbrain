@@ -6,5 +6,5 @@ window.App = Ember.Application.create({
 });
 
 io.socket.on('sendMessage', function(message){
-	console.log(message);
+	$('.messages').append(message);
 });

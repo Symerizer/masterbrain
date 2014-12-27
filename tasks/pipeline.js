@@ -37,6 +37,7 @@ var jsFilesToInject = [
   'js/dependencies/ember-data/ember-data.js',
   'js/dependencies/ember-data-sails-adapter/ember-data-sails-adapter.js',
   'js/application.js',
+  'js/store.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

@@ -1,3 +1,3 @@
 App.Router.map(function(){
-	this.route('playerchat');
+	this.route('users');
 });

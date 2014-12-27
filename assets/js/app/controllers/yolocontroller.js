@@ -1,1 +1,0 @@
-App.YoloController = Ember.ObjectController.extend();

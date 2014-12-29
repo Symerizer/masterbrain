@@ -6,5 +6,5 @@ window.App = Ember.Application.create({
 });
 
 io.socket.on('sendMessage', function(message){
-	$('.messages').append(message);
+	$('.messages').append(message + '<br>');
 });

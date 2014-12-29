@@ -1,10 +1,11 @@
-<h1 class="red">Welcome to your new Ember-Sails Application!</h1>
+<section id="spc-leftMenu">
+	<span class="spc-logoTitle">MasterBrain</span>
+	<ul>
+		<li>{{#link-to 'users'}}Users{{/link-to}}</li>
+		<li>{{#link-to 'chats'}}Chatbox{{/link-to}}</li>
+	</ul>
+</section>
 
-<ul>
-	<li>{{#link-to 'users'}}Users{{/link-to}}</li>
-	<li>{{#link-to 'chats'}}Chatbox{{/link-to}}</li>
-</ul>
-
-<div>
+<section id="spc-mainWindow">
 	{{outlet}}
-</div>
+</section>

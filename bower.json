@@ -17,13 +17,13 @@
   ],
   "dependencies": {
     "handlebars": "2.0.0",
-    "ember": "~1.*",
+    "ember": "~1.9.1",
     "jquery": "~2.*",
     "ember-data": "1.0.0-beta.14",
     "ember-data-sails-adapter": "~2.1.1"
   },
   "resolutions": {
     "handlebars": ">= 2.0.0 < 3.0.0",
-    "ember": "~1.*"
+    "ember": "~1.9.1"
   }
 }

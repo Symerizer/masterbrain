@@ -2,8 +2,7 @@ App.ChatsRoute = Ember.Route.extend({
 
 	activate : function(){
 		io.socket.on('sendMessage', function(message){
-			$('.messages').append(message);
-			console.log('test');
+			$('.messages').append(message + '</br>');
 		});
 	},
 

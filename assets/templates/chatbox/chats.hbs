@@ -1,7 +1,8 @@
-<div class="messages">
+<div class="spc-chatboxes">	
+	{{#view 'messages'}}
 	
-</div>
-
-<div>
-{{input class="chatInput" name="message" action='sendMessage' }}
+	{{/view}}
+	<div>
+		{{input class="chatInput" name="message" action='sendMessage' }}
+	</div>
 </div>

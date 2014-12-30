@@ -5,7 +5,6 @@ App.ChatsController = Ember.ArrayController.extend({
 			io.socket.post('/api/sendMessage', {sentMessage: message}, function(){
 				$('.chatInput').val('');
 			});
-			this.messages.pushObject(message);
 		}
 	}
 });

@@ -16,7 +16,7 @@ module.exports = {
 		id: { type: 'integer', unique: true, autoIncrement: true, columnName: 'id', primaryKey: true, required: true },
 		current : { type: 'boolean', columnName: 'current', required: true },
 
-		user: { model: 'User'},
+		user: { model: 'User' },
 		spaceship: { model: 'Spaceship'},
 		weapon: {collection: 'Weapon', via: 'spaceship', dominant: true },
 		equipment: {collection: 'Equipment', via: 'spaceship', dominant: true },

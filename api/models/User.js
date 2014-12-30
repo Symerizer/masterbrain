@@ -15,7 +15,9 @@ module.exports = {
 	attributes: {
 		id: { type: 'integer', unique: true, autoIncrement: true, columnName: 'id', primaryKey: true, required: true },
 		email: { type: 'email', required: true, unique: true, columnName: 'email' },
-		password: { type: 'string', required: true, columnName: 'password' }
+		password: { type: 'string', required: true, columnName: 'password' },
+
+		spaceship: { collection: 'User-Spaceship', via: 'spaceship' }
 	}
 };
 

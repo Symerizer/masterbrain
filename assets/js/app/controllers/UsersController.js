@@ -1,1 +1,9 @@
-App.UsersController = Ember.ArrayController.extend();
+App.UsersController = Ember.ArrayController.extend({
+
+	endPropertyChanges: function()
+	{
+		alert('salut');
+	}
+
+
+});

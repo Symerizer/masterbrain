@@ -9,6 +9,8 @@ module.exports = {
 
 	tableName: 'users',
 
+	autosubscribe: true,
+
 	autoCreatedAt: false,
 	autoUpdatedAt: false,
 

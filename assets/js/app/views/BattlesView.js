@@ -3,31 +3,32 @@ App.BattlesView = Ember.View.extend({
 
 	didInsertElement: function()
 	{
-		var hexagon = App.Hexagon.create();
 
 		var canvas  = document.querySelector('#canvas');
 
 		var context = canvas.getContext('2d');
 
-		context.fillStyle = "black";
+		var Fondetoiles = new Image();
+		Fondetoiles.src = 'images/Fondetoiles.jpg';
 
-		for(y = -2; y < 9; y++)
+
+		Fondetoiles.addEventListener('load', function() 
 		{
-			for(x = -2; x < 6; x++)
+        	context.drawImage(Fondetoiles, 0, 0);
+
+        	var map = App.Map.create({
+  				contxt: context
+			});
+
+			var spaceShip = new Image();
+			spaceShip.src = 'images/spaceship.png';
+
+			spaceShip.addEventListener('load', function()
 			{
-				hexagon.draw(context, x * 120, y * 68);
-				hexagon.draw(context, (x * 120) + 60, 34 + (y* 68));
-			}
-		}
+	        	context.drawImage(spaceShip, 228, 203);
+	    	}, false);
 
-		var spaceShip = new Image();
-		spaceShip.src = 'images/spaceship.png';
-
-		//context.drawImage(spaceShip,420,272)
-
-		spaceShip.addEventListener('load', function() {
-        context.drawImage(spaceShip, 228, 203);
-    	}, false);
+	    }, false);
 
 
 

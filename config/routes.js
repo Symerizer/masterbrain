@@ -36,7 +36,9 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'POST /api/sendMessage': 'ChatController.receiveMessage'
+  'POST /api/sendMessage': 'ChatController.receiveMessage',
+  //'GET /api/user': 'UserController.FindAll',
+  'POST /api/test': 'UserController.test'
 
   /***************************************************************************
   *                                                                          *

@@ -9,7 +9,7 @@ App.Hexagon = Ember.Object.extend({
 	init: function()
 	{
 
-  	},
+  },
 
   	/*setPosition: function(x,y)
   	{
@@ -26,6 +26,7 @@ App.Hexagon = Ember.Object.extend({
   		context.lineTo(positionX + this.get('EdgeLength'), positionY + this.get('angleY') + this.get('angleY'));
   		context.lineTo(positionX, positionY + this.get('angleY') + this.get('angleY'));
   		context.lineTo(positionX - this.get('angleX'), positionY + this.get('angleY'));
+      context.strokeStyle = '#8be2ff';
   		context.closePath();
   		context.stroke();
   	}//.property('positionX', 'positionY', 'angleX', 'angleY', 'EdgeLength')

@@ -49,56 +49,57 @@ module.exports = {
 		}
 		else
 		{
-			res.view('homepage');
+			res.redirect('/');
 		}
 	},
 
 	login : function(req, res)
 	{
-		if(req.method == 'POST')
+		if (!req.session.user)
 		{
 
-			var validator = require('validator');
-
-			if(!validator.isEmail(req.param('email')) || validator.isNull(req.param('password')))
+			if(req.method == 'POST')
 			{
-				res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
-			}
 
+				var validator = require('validator');
 
-			User.findOne({email: req.param('email')}, function (err, u)
-			{
-				if (u)
+				if(!validator.isEmail(req.param('email')) || validator.isNull(req.param('password')))
 				{
-					//var bcrypt = require('node-bcrypt');
+					res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
+				}
 
-					if (bcrypt.checkpw(req.param('password'), u.password))
+
+				User.findOne({email: req.param('email')}, function (err, u)
+				{
+					if (u)
 					{
-						//req.session.utilisateur = utilisateur;
-						req.session.user = u;
-						res.view('homepage');
+						//var bcrypt = require('node-bcrypt');
+
+						if (bcrypt.checkpw(req.param('password'), u.password))
+						{
+							//req.session.utilisateur = utilisateur;
+							req.session.user = u;
+							res.view('homepage');
+						}
+						else
+						{
+							res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
+						}
 					}
 					else
 					{
 						res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
 					}
-				}
-				else
-				{
-					res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
-				}
-			})
-		}
-		else
-		{
-			if (req.session.user)
-			{
-				res.view('homepage');
+				})
 			}
 			else
 			{
 				res.view('loginCreate',{layout: null, erreurAccount: "", type: true, action: '/'});
 			}
+		}
+		else
+		{
+			res.view('homepage');
 		}
 	}
 

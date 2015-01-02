@@ -73,11 +73,10 @@ module.exports = {
 				{
 					if (u)
 					{
-						//var bcrypt = require('node-bcrypt');
+						var bcrypt = require('node-bcrypt');
 
 						if (bcrypt.checkpw(req.param('password'), u.password))
 						{
-							//req.session.utilisateur = utilisateur;
 							req.session.user = u;
 							res.view('homepage');
 						}

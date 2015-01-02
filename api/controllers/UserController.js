@@ -7,7 +7,11 @@
 
 module.exports = {
 	
-
+	/*find : function(req, res)
+	{
+		console.log(req.method);
+		//return res.json(200,[{"id": 1,"email" : "nope@nope.com", "password" : "nope2"}]);
+	},*/
 	create : function(req,res)
 	{
 		if(!req.session.user)
@@ -29,6 +33,7 @@ module.exports = {
 						{
 							req.session.user = newUser;
 							res.redirect('/');
+							sails.sockets.broadcast('user','User',{action: 'create', model : 'user', data : newUser}, sails.sockets.id(req.socket));
 						}
 						else
 						{
@@ -95,6 +100,36 @@ module.exports = {
 		{
 			res.view('homepage');
 		}
+	},
+
+	subscribe: function(req, res)
+	{
+
+		//console.log(sails.sockets);
+
+		sails.sockets.join(sails.sockets.id(req.socket), 'user');
+
+		res.send(200);
+	},
+
+	update: function(req, res)
+	{
+		//if(req.method == 'POST')
+		//{
+			User.update({/*email: req.param('email'), password: req.param('password'),*/ nickname: 'salut34'/*req.param('nickname')*/}, function newUser(err, updateUser)
+			{
+				if(!err)
+				{
+					req.session.user = updateUser;
+					res.redirect('/');
+					sails.sockets.broadcast('user','User',{action: 'create', model : 'user', data : updateUser});
+				}
+				/*else
+				{
+					res.view('loginCreate',{layout: null, erreurAccount: "The email already exists. Please try again.", type: false, action: '/api/user'});
+				}*/
+			});
+		//}
 	}
 
 };

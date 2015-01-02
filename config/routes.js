@@ -32,13 +32,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  '/': 'UserController.login',
 
   'POST /api/sendMessage': 'ChatController.receiveMessage',
   //'GET /api/user': 'UserController.FindAll',
-  'POST /api/test': 'UserController.test'
+  //'POST /api/test': 'UserController.test'
+  'GET /api/newUser': 'UserController.create',
 
   /***************************************************************************
   *                                                                          *

@@ -8,11 +8,6 @@
 module.exports = {
 	
 
-	find : function(req, res)
-	{
-		return res.json(200,[{"id": 1,"email" : "nope@nope.com", "password" : "nope2"}]);
-	},
-
 	create : function(req,res)
 	{
 		if(!req.session.user)

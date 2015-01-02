@@ -26,6 +26,8 @@ App.SystemsView = Ember.View.extend({
 
 		context.strokeStyle = "#000";
 		context.stroke();
+
+		this.controller.getUserLocation();
 	}
 
 });

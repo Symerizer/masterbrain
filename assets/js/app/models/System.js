@@ -1,4 +1,5 @@
 App.System = DS.Model.extend({
-	x: DS.attr('integer'),
-	y: DS.attr('integer')
+	system: DS.attr(),
+	x: DS.attr(),
+	y: DS.attr()
 });

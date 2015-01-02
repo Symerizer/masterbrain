@@ -19,7 +19,7 @@ module.exports = {
 		nickname: { type: 'string', required: true, columnName: 'nickname', unique: true },
 
 		spaceship: { collection: 'User-Spaceship', via: 'spaceship' },
-		location: {model: 'location'},
+		system: {model: 'system'},
 		
 		toJSON: function()
 		{

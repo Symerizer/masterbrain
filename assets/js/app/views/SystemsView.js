@@ -24,10 +24,10 @@ App.SystemsView = Ember.View.extend({
 			context.lineTo(this.get('width'), y);
 		}
 
-		context.strokeStyle = "#000";
+		context.strokeStyle = "#fff";
 		context.stroke();
 
-		this.controller.getUserLocation();
+		console.log();
 	}
 
 });

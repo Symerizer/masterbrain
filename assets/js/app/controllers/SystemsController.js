@@ -1,3 +1,1 @@
-App.SystemsController = Ember.ObjectController.extend({
-	
-});
+App.SystemsController = Ember.ArrayController.extend({});

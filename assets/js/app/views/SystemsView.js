@@ -27,7 +27,7 @@ App.SystemsView = Ember.View.extend({
 		context.strokeStyle = "#fff";
 		context.stroke();
 
-		console.log();
+		console.log(this.model);
 	}
 
 });

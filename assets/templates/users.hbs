@@ -1,3 +1,13 @@
-{{#each user in controller}}
-  {{user.nickname}} <br>
-{{/each}}
+<ul>
+	{{#each user in controller}}
+  		<li {{action "selectUser" user}}>{{user.nickname}} </li>
+	{{/each}}
+</ul>
+
+<br/>
+<br/>
+
+{{#if Edit}}
+	{{UserEdit.id}}<br/>
+	{{UserEdit.nickname}}
+{{/if}}

@@ -30,14 +30,12 @@ App.SocketAdapter = Ember.Object.extend({
 			{
 				case 'create':
 				{
-					var type = store.modelFor(message.model);
-		  			var serializer = store.serializerFor(type.typeKey);;
-		 			var record = serializer.extractSingle(store, type, message.data);
-		  			store.push(message.model, record);
+					//var modelName = message.model;
+					store.push(message.model, store.normalize(message.model, message.data));
 		  		}
 		  		case 'update':
 		  		{
-
+		  			
 		  		}
 	  		}
 		});

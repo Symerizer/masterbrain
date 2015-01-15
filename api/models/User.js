@@ -10,7 +10,6 @@ module.exports = {
 	tableName: 'users',
 	autoCreatedAt: false,
 	autoUpdatedAt: false,
-	autoPk:true,
 
 	attributes: {
 		id: { type: 'integer', unique: true, autoIncrement: true, columnName: 'id', primaryKey: true },

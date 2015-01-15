@@ -33,7 +33,7 @@ module.exports = {
 						{
 							req.session.user = newUser;
 							res.redirect('/');
-							sails.sockets.broadcast('user','User',{action: 'create', model : 'user', data : newUser}, sails.sockets.id(req.socket));
+							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser}, sails.sockets.id(req.socket));
 						}
 						else
 						{
@@ -122,7 +122,7 @@ module.exports = {
 				{
 					req.session.user = updateUser;
 					res.redirect('/');
-					sails.sockets.broadcast('user','User',{action: 'create', model : 'user', data : updateUser});
+					sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : updateUser});
 				}
 				/*else
 				{

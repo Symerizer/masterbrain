@@ -7,10 +7,10 @@ App.UsersRoute = Ember.Route.extend({
 
 		//console.log(this.store.modelFor('user'));
 
-		App.SocketAdapter.create({
+		/*App.SocketAdapter.create({
 			model : 'User',
 			store : this.store
-		})
+		})*/
 	},
 
 	deactivate : function(){

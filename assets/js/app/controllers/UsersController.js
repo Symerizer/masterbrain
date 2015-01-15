@@ -5,5 +5,7 @@ App.UsersController = Ember.ArrayController.extend({
 		alert('salut');
 	}
 
+	
+
 
 });

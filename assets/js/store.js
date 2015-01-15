@@ -46,9 +46,6 @@ App.ApplicationAdapter = DS.Adapter.extend({
 		var id = record.get('id');
 		var url = '/' + this.get('namespace') + '/' + [type.typeKey, id].join('/');
 
-		console.log(data);
-		console.log(url);
-
 		return new Ember.RSVP.Promise(function(resolve, reject) {
 		    io.socket.put(url, data, function(data, jwres) {
 		        Ember.run(null, resolve, data);

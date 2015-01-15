@@ -31,7 +31,7 @@ App.ApplicationAdapter = DS.Adapter.extend({
 
 
   	find: function(store, type, id) {
-	    var url = namespace + '/' + [type.typeKey, id].join('/');
+	    var url = '/' + this.get('namespace') + '/' + [type.typeKey, id].join('/');
 
 	   	return new Ember.RSVP.Promise(function(resolve, reject) {
 		    io.socket.get(url, function(data, jwres) {
@@ -44,10 +44,13 @@ App.ApplicationAdapter = DS.Adapter.extend({
 	updateRecord: function(store, type, record){
 		var data = this.serialize(record, { includeId: true });
 		var id = record.get('id');
-		var url = namespace + '/' + [type, id].join('/');
+		var url = '/' + this.get('namespace') + '/' + [type.typeKey, id].join('/');
+
+		console.log(data);
+		console.log(url);
 
 		return new Ember.RSVP.Promise(function(resolve, reject) {
-		    io.socket.put(url, function(data, jwres) {
+		    io.socket.put(url, data, function(data, jwres) {
 		        Ember.run(null, resolve, data);
 		    })
 		});

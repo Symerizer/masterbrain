@@ -114,14 +114,18 @@ module.exports = {
 
 	update: function(req, res)
 	{
+
+		console.log('salut');
+		console.log(req.body);
+
 		//if(req.method == 'POST')
 		//{
-			User.update({/*email: req.param('email'), password: req.param('password'),*/ nickname: 'salut34'/*req.param('nickname')*/}, function newUser(err, updateUser)
+			User.update({id : req.body.id},/*email: req.param('email'), password: req.body('password'),*/ {nickname: req.body.nickname}, function newUser(err, updateUser)
 			{
 				if(!err)
 				{
 					req.session.user = updateUser;
-					res.redirect('/');
+					return updateUser;
 					sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : updateUser});
 				}
 				/*else
@@ -130,6 +134,7 @@ module.exports = {
 				}*/
 			});
 		//}
+
 	}
 
 };

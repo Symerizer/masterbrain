@@ -11,6 +11,10 @@ html, body{
 	background-image:url("images.jpg");
 }
 
+input:focus{
+	outline:none;
+}
+
 #spc-leftMenu{
 	// .spc-logoTitle{
 	// 	display: block;
@@ -63,12 +67,19 @@ html, body{
   -moz-border-radius: 36px 36px 36px 36px;
   -webkit-border-radius: 36px 36px 36px 36px;
 	border: 5px double #5a5b73;
+	border-top-width: 0px;
 }
 
 .spc-chatboxes{
 	.spc-messages{
 		height: 200px;
 		word-wrap: break-word; 
+		.chat-nickname{
+			font-weight:bold;
+		}
+		.chat-message{
+
+		}
 	}
 	.spc-input{
 		border-radius: 0px 0px 28px 28px;

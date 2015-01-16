@@ -48,8 +48,14 @@ input:focus{
     -ms-box-shadow: 0px 0px 8px 0px #000000;
     box-shadow: 0px 0px 8px 0px #000000;
     /* Adds the transparent background */
-    background-color: #747E80;
-    background-color: rgba(116, 126, 128, 0.7);
+    background: rgba(89,127,163,0.8);
+		background: -moz-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(89,127,163,0.8)), color-stop(100%, rgba(48,42,30,0.8)));
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -o-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -ms-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: radial-gradient(ellipse at center, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#597fa3', endColorstr='#302a1e', GradientType=1 );
 }
 
 #ember-view{
@@ -62,12 +68,19 @@ input:focus{
 	margin:15px;
 	padding:10px;
 	overflow-y:auto;
-	background-color: #747E80;
-  background-color: rgba(116, 126, 128, 0.7);
-	border-radius: 36px 36px 36px 36px;
-  -moz-border-radius: 36px 36px 36px 36px;
-  -webkit-border-radius: 36px 36px 36px 36px;
+	border-radius: 0px 0px 30px 30px;
+  -moz-border-radius: 0px 0px 30px 30px;
+  -webkit-border-radius: 0px 0px 30px 30px;
 	border: 5px double #313241;
+	background: rgba(48,42,30,0.8);
+	background: -moz-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+	background: -webkit-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 );
+
 }
 
 .spc-chatboxes{
@@ -81,6 +94,7 @@ input:focus{
 			font-weight: bold;
 			padding-left:15px;
 			vertical-align: middle;
+			color:rgba(0, 0, 0, 0.5);
 		}
 	}
 	.spc-messages{
@@ -98,9 +112,9 @@ input:focus{
 		}
 	}
 	.spc-input{
-		border-radius: 0px 0px 28px 28px;
-    -moz-border-radius: 0px 0px 28px 28px;
-    -webkit-border-radius: 0px 0px 28px 28px;
+		border-radius: 0px 0px 20px 20px;
+    -moz-border-radius: 0px 0px 20px 20px;
+    -webkit-border-radius: 0px 0px 20px 20px;
     padding-left:20px;
 		border: 4px double #313241;
 		background-color: #747E80;

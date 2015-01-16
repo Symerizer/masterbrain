@@ -2,18 +2,16 @@ App.UsersController = Ember.ArrayController.extend({
 
 	Edit: false,
 	UserEdit: null,
+	UserEditParam: null,
 
 	actions: {
 		selectUser: function(user){
 			this.set('Edit', true);
-
+			this.set('UserEditParam', {nickname : user.get('nickname')});
 			this.set('UserEdit', user);
 		},
-		updateUser: function(params){
-
-			this.get('UserEdit').save();
-			console.log(params);
-
+		updateUser: function(){
+			this.get('UserEdit').set('nickname',this.get('UserEditParam').nickname).save();
 		}
 	}
 

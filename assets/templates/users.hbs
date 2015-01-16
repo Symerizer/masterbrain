@@ -8,9 +8,8 @@
 <br/>
 
 {{#if Edit}}
-	<form {{action "updateUser" this on="submit"}}>
-		id : {{UserEdit.id}}<br/>
-		nickname : {{input name="nickname" value=UserEdit.nickname}}<br/>
+	<form {{action "updateUser" on="submit"}}>
+		nickname : {{input name="nickname" value=UserEditParam.nickname}}<br/>
 		{{input type="submit" value="save"}}
 	</form>
 {{/if}}

@@ -96,6 +96,8 @@ App.ApplicationAdapter = DS.Adapter.extend({
 		  		}
 		  		case 'update':
 		  		{
+		  			console.log('salut');
+		  			console.log(store.normalize(message.model, message.data));
 		  			store.push(message.model, store.normalize(message.model, message.data));
 		  		}
 	  		}

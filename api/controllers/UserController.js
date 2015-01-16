@@ -31,6 +31,7 @@ module.exports = {
 						//console.log(err.ValidationError);
 						if(!err)
 						{
+							console.log(newUser);
 							req.session.user = newUser;
 							res.redirect('/');
 							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser}, sails.sockets.id(req.socket));
@@ -115,18 +116,18 @@ module.exports = {
 	update: function(req, res)
 	{
 
-		console.log('salut');
-		console.log(req.body);
-
 		//if(req.method == 'POST')
 		//{
-			User.update({id : req.body.id},/*email: req.param('email'), password: req.body('password'),*/ {nickname: req.body.nickname}, function newUser(err, updateUser)
+			User.update(req.body.id, {nickname: req.body.nickname}, function updateUser(err, updateUser)
 			{
 				if(!err)
 				{
-					req.session.user = updateUser;
+
+					console.log(updateUser.toJSON());
+
+					req.session.user = updateUser[0];
+					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0]}, sails.sockets.id(req.socket));
 					return updateUser;
-					sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : updateUser});
 				}
 				/*else
 				{

@@ -115,8 +115,8 @@ module.exports = {
 	update: function(req, res)
 	{
 
-		//if(req.method == 'POST')
-		//{
+		if(req.method == 'POST')
+		{
 			User.update(req.body.id, {nickname: req.body.nickname}, function updateUser(err, updateUser)
 			{
 				if(!err)
@@ -126,13 +126,29 @@ module.exports = {
 					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0].toJSON()}, sails.sockets.id(req.socket));
 					return updateUser;
 				}
-				/*else
-				{
-					res.view('loginCreate',{layout: null, erreurAccount: "The email already exists. Please try again.", type: false, action: '/api/user'});
-				}*/
 			});
-		//}
+		}
 
+	},
+
+	destroy: function(req, res)
+	{
+
+		console.log('salut');
+
+		User.destroy(req.body.id, function deleteUser(err, deleteUser)
+		{
+
+			console.log('salut');
+
+			if(!err)
+			{
+					//req.session.user = updateUser[0].toJSON();
+					console.log(deleteUser);
+					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : deleteUser[0].id}, sails.sockets.id(req.socket));
+					return deleteUser;
+			}
+		}) 
 	}
 
 };

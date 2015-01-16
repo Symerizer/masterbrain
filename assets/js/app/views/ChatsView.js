@@ -3,7 +3,7 @@ App.ChatsView = Ember.View.extend({
 	didInsertElement: function(){
 		$('.chatInput').focus();
 		for (var i = 0; i < this.controller.messages.length; i++) {
-			$('.spc-messages').append(this.controller.messages[i]+'<br>');
+			$('.spc-messages').append(this.controller.messages[i]);
 		};
 	}
 });

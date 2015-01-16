@@ -8,7 +8,8 @@ html, body{
 	padding: 0;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	background-image:url("images.jpg");
+	background-image:url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-22-a-full_jpg.jpg");
+	background-size:cover;
 }
 
 input:focus{
@@ -59,21 +60,36 @@ input:focus{
 	height:auto;
 	top: 0;
 	margin:15px;
-	padding:20px;
+	padding:10px;
 	overflow-y:auto;
 	background-color: #747E80;
   background-color: rgba(116, 126, 128, 0.7);
 	border-radius: 36px 36px 36px 36px;
   -moz-border-radius: 36px 36px 36px 36px;
   -webkit-border-radius: 36px 36px 36px 36px;
-	border: 5px double #5a5b73;
-	border-top-width: 0px;
+	border: 5px double #313241;
 }
 
 .spc-chatboxes{
+	.spc-title{
+		background-color: rgba(116, 126, 128, 0.1);
+		height: 30px;
+		border-top: 2px solid rgba(67, 83, 101, 0.7);
+		border-bottom: 2px solid rgba(67, 83, 101, 0.7);
+		.title{
+			font-style: italic;
+			font-weight: bold;
+			padding-left:15px;
+			vertical-align: middle;
+		}
+	}
 	.spc-messages{
 		height: 200px;
 		word-wrap: break-word; 
+		overflow: auto;
+		margin-bottom: 15px;
+		margin-top: 15px;
+		margin-left:5px;
 		.chat-nickname{
 			font-weight:bold;
 		}
@@ -86,9 +102,10 @@ input:focus{
     -moz-border-radius: 0px 0px 28px 28px;
     -webkit-border-radius: 0px 0px 28px 28px;
     padding-left:20px;
-		border: 4px double #5a5b73;
+		border: 4px double #313241;
 		background-color: #747E80;
     background-color: rgba(116, 126, 128, 0.9);
+    padding-bottom:2px;
 		.chatInput{
 			border:0px;
 			width:99%;

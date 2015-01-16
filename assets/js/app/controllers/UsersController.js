@@ -11,7 +11,9 @@ App.UsersController = Ember.ArrayController.extend({
 			this.set('UserEdit', user);
 		},
 		updateUser: function(){
-			this.get('UserEdit').set('nickname',this.get('UserEditParam').nickname).save();
+			this.get('UserEdit').set('nickname',this.get('UserEditParam').nickname);
+			this.get('UserEdit').save();
+
 		},
 		deleteUser: function(){
 			this.set('Edit', false);

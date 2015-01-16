@@ -28,12 +28,11 @@ module.exports = {
 				else
 				{
 					User.create({email: req.param('email'), password: req.param('password'), nickname: req.param('nickname')}, function newUser(err, newUser){
-						//console.log(err.ValidationError);
 						if(!err)
 						{
 							req.session.user = newUser.toJSON();
 							res.redirect('/');
-							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser.toJSON()}, sails.sockets.id(req.socket));
+							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser.toJSON()}, req.socket);
 						}
 						else
 						{
@@ -104,9 +103,6 @@ module.exports = {
 
 	subscribe: function(req, res)
 	{
-
-		//console.log(sails.sockets);
-
 		sails.sockets.join(sails.sockets.id(req.socket), 'user');
 
 		res.send(200);
@@ -115,16 +111,16 @@ module.exports = {
 	update: function(req, res)
 	{
 
-		if(req.method == 'POST')
+		if(req.method == 'PUT')
 		{
+
 			User.update(req.body.id, {nickname: req.body.nickname}, function updateUser(err, updateUser)
 			{
 				if(!err)
 				{
-
 					req.session.user = updateUser[0].toJSON();
-					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0].toJSON()}, sails.sockets.id(req.socket));
-					return updateUser;
+					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0].toJSON()}, req.socket);
+					res.json(updateUser[0]);
 				}
 			});
 		}
@@ -133,20 +129,13 @@ module.exports = {
 
 	destroy: function(req, res)
 	{
-
-		console.log('salut');
-
 		User.destroy(req.body.id, function deleteUser(err, deleteUser)
 		{
-
-			console.log('salut');
-
 			if(!err)
 			{
 					//req.session.user = updateUser[0].toJSON();
-					console.log(deleteUser);
-					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : deleteUser[0].id}, sails.sockets.id(req.socket));
-					return deleteUser;
+					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : deleteUser[0].id}, req.socket);
+					res.json(deleteUser);
 			}
 		}) 
 	}

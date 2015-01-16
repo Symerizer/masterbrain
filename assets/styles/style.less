@@ -27,6 +27,9 @@ input:focus{
 		color: black;
 		text-decoration: none;
 	}
+	a:hover{	
+  	text-shadow: 2px 2px 3px rgba(180, 180, 180, 1);
+	}
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -55,7 +58,7 @@ input:focus{
 		background: -o-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
 		background: -ms-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
 		background: radial-gradient(ellipse at center, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#597fa3', endColorstr='#302a1e', GradientType=1 );
+		filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#597fa3', endColorstr='#302a1e', GradientType=1 )";
 }
 
 #ember-view{
@@ -79,13 +82,13 @@ input:focus{
 	background: -o-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
 	background: -ms-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
 	background: linear-gradient(to bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 );
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
 
 }
 
 .spc-chatboxes{
 	.spc-title{
-		background-color: rgba(116, 126, 128, 0.1);
+		background-color: rgba(48,42,30,0.2);
 		height: 30px;
 		border-top: 2px solid rgba(67, 83, 101, 0.7);
 		border-bottom: 2px solid rgba(67, 83, 101, 0.7);
@@ -95,6 +98,7 @@ input:focus{
 			padding-left:15px;
 			vertical-align: middle;
 			color:rgba(0, 0, 0, 0.5);
+			text-shadow: 0px 0px 5px rgba(120, 120, 120, 0.8);
 		}
 	}
 	.spc-messages{
@@ -117,8 +121,14 @@ input:focus{
     -webkit-border-radius: 0px 0px 20px 20px;
     padding-left:20px;
 		border: 4px double #313241;
-		background-color: #747E80;
-    background-color: rgba(116, 126, 128, 0.9);
+		background: rgba(48,42,30,0.8);
+		background: -moz-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+		background: -webkit-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+		background: -o-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+		background: -ms-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+		background: linear-gradient(to bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+		filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
     padding-bottom:2px;
 		.chatInput{
 			border:0px;

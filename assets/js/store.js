@@ -8,7 +8,7 @@ App.ApplicationAdapter = DS.Adapter.extend({
 
 	createRecord: function(store, type, record){
 		var data = this.serialize(record, { includeId: true });
-    	var url = namespace + '/' + type;
+    	var url = '/' + this.get('namespace') + '/' + type;
 
 	    return new Ember.RSVP.Promise(function(resolve, reject) {
 	      io.socket.post(url, data, function(data, jwres) {
@@ -20,7 +20,7 @@ App.ApplicationAdapter = DS.Adapter.extend({
 	deleteRecord: function(store, type, record) {
     	var data = this.serialize(record, { includeId: true });
 	    var id = record.get('id');
-	    var url = namespace + '/' + [type, id].join('/');
+	    var url = '/' + this.get('namespace') + '/' + [type.typeKey, id].join('/');
 
 	    return new Ember.RSVP.Promise(function(resolve, reject) {
 		    io.socket.delete(url, data, function(data, jwres) {
@@ -96,9 +96,12 @@ App.ApplicationAdapter = DS.Adapter.extend({
 		  		}
 		  		case 'update':
 		  		{
-		  			console.log('salut');
-		  			console.log(store.normalize(message.model, message.data));
 		  			store.push(message.model, store.normalize(message.model, message.data));
+		  		}
+		  		case 'delete':
+		  		{
+		  			var record = store.getById(message.model, message.data);
+		  			store.unloadRecord(record);
 		  		}
 	  		}
 		});

@@ -31,10 +31,9 @@ module.exports = {
 						//console.log(err.ValidationError);
 						if(!err)
 						{
-							console.log(newUser);
-							req.session.user = newUser;
+							req.session.user = newUser.toJSON();
 							res.redirect('/');
-							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser}, sails.sockets.id(req.socket));
+							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser.toJSON()}, sails.sockets.id(req.socket));
 						}
 						else
 						{
@@ -116,26 +115,40 @@ module.exports = {
 	update: function(req, res)
 	{
 
-		//if(req.method == 'POST')
-		//{
+		if(req.method == 'POST')
+		{
 			User.update(req.body.id, {nickname: req.body.nickname}, function updateUser(err, updateUser)
 			{
 				if(!err)
 				{
 
-					console.log(updateUser.toJSON());
-
-					req.session.user = updateUser[0];
-					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0]}, sails.sockets.id(req.socket));
+					req.session.user = updateUser[0].toJSON();
+					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0].toJSON()}, sails.sockets.id(req.socket));
 					return updateUser;
 				}
-				/*else
-				{
-					res.view('loginCreate',{layout: null, erreurAccount: "The email already exists. Please try again.", type: false, action: '/api/user'});
-				}*/
 			});
-		//}
+		}
 
+	},
+
+	destroy: function(req, res)
+	{
+
+		console.log('salut');
+
+		User.destroy(req.body.id, function deleteUser(err, deleteUser)
+		{
+
+			console.log('salut');
+
+			if(!err)
+			{
+					//req.session.user = updateUser[0].toJSON();
+					console.log(deleteUser);
+					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : deleteUser[0].id}, sails.sockets.id(req.socket));
+					return deleteUser;
+			}
+		}) 
 	}
 
 };

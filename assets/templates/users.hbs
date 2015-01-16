@@ -10,6 +10,6 @@
 {{#if Edit}}
 	<form {{action "updateUser" on="submit"}}>
 		nickname : {{input name="nickname" value=UserEditParam.nickname}}<br/>
-		{{input type="submit" value="save"}}
+		{{input type="submit" value="save"}} <button {{action "deleteUser" }}>delete</button>
 	</form>
 {{/if}}

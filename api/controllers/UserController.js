@@ -14,7 +14,7 @@ module.exports = {
 	},*/
 	create : function(req,res)
 	{
-		if(!req.session.user)
+		if(req.session.user)
 		{
 			if(req.method == 'POST')
 			{
@@ -30,7 +30,7 @@ module.exports = {
 					User.create({email: req.param('email'), password: req.param('password'), nickname: req.param('nickname')}, function newUser(err, newUser){
 						if(!err)
 						{
-							req.session.user = newUser.toJSON();
+							req.session.user = newUser;
 							res.redirect('/');
 							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : [newUser.toJSON()]}, req.socket);
 						}
@@ -64,31 +64,39 @@ module.exports = {
 
 				if(!validator.isEmail(req.param('email')) || validator.isNull(req.param('password')))
 				{
-					res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
+					res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."});
 				}
-
-
-				User.findOne({email: req.param('email')}, function (err, u)
+				else
 				{
-					if (u)
+					User.findOne({email: req.param('email')}, function (err, userFound)
 					{
-						var bcrypt = require('node-bcrypt');
-
-						if (bcrypt.checkpw(req.param('password'), u.password))
+						if (userFound)
 						{
-							req.session.user = u;
-							res.view('homepage');
+							var bcrypt = require('node-bcrypt');
+
+							if (bcrypt.checkpw(req.param('password'), userFound.password))
+							{
+								User.update(userFound.id, {online: true}, function updateUser(err, updateUser)
+								{
+									if(!err)
+									{
+										req.session.user = updateUser[0];
+										sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
+										res.view('homepage');
+									}
+								});
+							}
+							else
+							{
+								res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
+							}
 						}
 						else
 						{
 							res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
 						}
-					}
-					else
-					{
-						res.view('loginCreate', {layout: null, type: true, action: '/', erreurAccount: "Wrong password or non-existing email. Please try again."})
-					}
-				})
+					})
+				}
 			}
 			else
 			{
@@ -113,12 +121,11 @@ module.exports = {
 
 		if(req.method == 'PUT')
 		{
-
 			User.update(req.body.id, {nickname: req.body.nickname}, function updateUser(err, updateUser)
 			{
 				if(!err)
 				{
-					req.session.user = updateUser[0].toJSON();
+					req.session.user = updateUser[0];
 					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
 					res.json(updateUser[0]);
 				}
@@ -138,6 +145,27 @@ module.exports = {
 					res.json({id : deleteUser[0].id});
 			}
 		}) 
+	},
+
+	logout: function(req, res)
+	{
+		if (req.session.user != null)
+		{
+			User.update(req.session.user.id, {online: false}, function updateUser(err, updateUser)
+			{
+				if(!err)
+				{
+					req.session.user = null;
+					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
+					res.redirect('/');
+				}
+			});
+		}
+		else
+		{
+			res.redirect('/');
+		}
+
 	}
 
 };

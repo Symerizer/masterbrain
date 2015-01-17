@@ -16,6 +16,7 @@ module.exports = {
 		email: { type: 'email', required: true, unique: true, columnName: 'email' },
 		password: { type: 'string', required: true, columnName: 'password' },
 		nickname: { type: 'string', required: true, columnName: 'nickname', unique: true },
+		online: { type: 'boolean', columnName: 'online', defaultsTo: false},
 
 		spaceship: { collection: 'User-Spaceship', via: 'spaceship' },
 		system: {model: 'system'},

@@ -14,7 +14,7 @@ module.exports = {
 	},*/
 	create : function(req,res)
 	{
-		if(req.session.user)
+		if(!req.session.user)
 		{
 			if(req.method == 'POST')
 			{

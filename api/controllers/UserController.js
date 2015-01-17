@@ -32,7 +32,7 @@ module.exports = {
 						{
 							req.session.user = newUser.toJSON();
 							res.redirect('/');
-							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : newUser.toJSON()}, req.socket);
+							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : [newUser.toJSON()]}, req.socket);
 						}
 						else
 						{
@@ -119,7 +119,7 @@ module.exports = {
 				if(!err)
 				{
 					req.session.user = updateUser[0].toJSON();
-					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : updateUser[0].toJSON()}, req.socket);
+					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
 					res.json(updateUser[0]);
 				}
 			});
@@ -134,8 +134,8 @@ module.exports = {
 			if(!err)
 			{
 					//req.session.user = updateUser[0].toJSON();
-					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : deleteUser[0].id}, req.socket);
-					res.json(deleteUser);
+					sails.sockets.broadcast('user','StoreSocket',{action: 'delete', model : 'user', data : [deleteUser[0].id]}, req.socket);
+					res.json({id : deleteUser[0].id});
 			}
 		}) 
 	}

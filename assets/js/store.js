@@ -24,7 +24,6 @@ App.ApplicationAdapter = DS.Adapter.extend({
 
 	    return new Ember.RSVP.Promise(function(resolve, reject) {
 		    io.socket.delete(url, data, function(data, jwres) {
-		    	console.log(data);
 		        Ember.run(null, resolve, data);
 		      })
 		});
@@ -48,9 +47,8 @@ App.ApplicationAdapter = DS.Adapter.extend({
 		var url = '/' + this.get('namespace') + '/' + [type.typeKey, id].join('/');
 
 		return new Ember.RSVP.Promise(function(resolve, reject) {
-			console.log('yup');
 		    io.socket.put(url, data, function(data, jwres) {
-		    	console.log(resolve);
+
 		        Ember.run(null, resolve, data);
 		    })
 		});
@@ -93,18 +91,22 @@ App.ApplicationAdapter = DS.Adapter.extend({
 			{
 				case 'create':
 				{
-					store.push(message.model, store.normalize(message.model, message.data));
+					store.pushMany(message.model, store.normalize(message.model, message.data));
 					break;
 		  		}
 		  		case 'update':
 		  		{
-		  			store.push(message.model, store.normalize(message.model, message.data));
+		  			store.pushMany(message.model, store.normalize(message.model, message.data));
 		  			break;
 		  		}
 		  		case 'delete':
 		  		{
-		  			var record = store.getById(message.model, message.data);
-		  			store.unloadRecord(record);
+		  			var record = null;
+		  			for (i = 0; i < message.data.length; i++)
+		  			{
+		  				record = store.getById(message.model, message.data[i]);
+		  				store.unloadRecord(record);
+		  			}
 		  			break;
 		  		}
 	  		}

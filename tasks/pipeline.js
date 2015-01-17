@@ -37,7 +37,7 @@ var jsFilesToInject = [
   'js/dependencies/ember-data/ember-data.js',
   'js/dependencies/ember-data-sails-adapter/ember-data-sails-adapter.js',
   'js/dependencies/jmousewheel/jquery.mousewheel.js',
-  'js/dependencies/jscrollpane/jquery.jscrollpane.min.js',
+  'js/dependencies/jquery.jscrollpane/jquery.jscrollpane.min.js',
   'js/application.js',
   'js/store.js',
 

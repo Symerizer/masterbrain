@@ -4,12 +4,14 @@ App.Planet = Ember.Object.extend({
 	positionY: 0,
   radius: 0,
   image: null,
+  time: null,
 
 	init: function()
 	{
     var tmpImage = new Image();
     tmpImage.src = this.get('imgUrl');
     this.set('image', tmpImage);
+    this.set('time',new Date());
   },
 
   	/*setPosition: function(x,y)
@@ -20,8 +22,7 @@ App.Planet = Ember.Object.extend({
 
   	draw: function(context)
   	{
-      var time = new Date();
-      context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+      context.rotate( ((2*Math.PI)/60)*this.get('time').getSeconds() + ((2*Math.PI)/60000)*this.get('time').getMilliseconds() );
       context.translate(105,0);
       context.fillRect(0,-12,50,24); // Shadow
       context.drawImage(this.get('image'),-12,-12);

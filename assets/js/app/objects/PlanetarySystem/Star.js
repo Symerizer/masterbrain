@@ -18,7 +18,7 @@ App.Star = Ember.Object.extend({
   		this.set('positionY',y);
   	},*/
 
-  	draw: function(context)
+  	draw: function(context, time)
   	{
       /*var time = new Date();
       context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );

@@ -37,28 +37,40 @@ App.SystemsView = Ember.View.extend({
 
 		var context = canvas.getContext('2d');
 
-
 		var PlanetEarth = App.Planet.create({
 			imgUrl : "images/Canvas_earth.png"
 		});
 		var StarSun = App.Star.create({
 			imgUrl : "images/Canvas_sun.png"
 		});
+		var NaturalSatelliteMoon = App.NaturalSatellite.create({
+			imgUrl : "images/Canvas_moon.png"
+		});
 
 		tmplist = [];
 
 		tmplist.push(PlanetEarth);
 		tmplist.push(StarSun);
+		tmplist.push(NaturalSatelliteMoon);
 
 		this.set('list', tmplist);
 
 		var that = this;
 
+		context.globalCompositeOperation = 'destination-over';
+
 		tmplist[0].image.addEventListener('load', function()
 		{
 			tmplist[1].image.addEventListener('load', function()
 			{
-				window.requestAnimationFrame(that.drawSystem(context));
+				/*Ember.run(function(){
+					that.drawSystem(context);
+				})*/
+
+			window.requestAnimationFrame(function()
+				{
+					that.drawSystem(context);
+				});
 			}, false);
 		}, false);
 
@@ -70,26 +82,37 @@ App.SystemsView = Ember.View.extend({
 
 	drawSystem: function(context)
 	{
+		var time = new Date();
 
-		context.globalCompositeOperation = 'destination-over';
-  		context.clearRect(0,0,300,300); // clear canvas
+  		context.clearRect(0,0,300,300); // clearcanvas
 
 		context.fillStyle = 'rgba(0,0,0,0.4)';
 		context.strokeStyle = 'rgba(0,153,255,0.4)';
 		context.save();
 		context.translate(150,150);
 
-		this.get('list')[0].draw(context);
+		this.get('list')[0].draw(context, time);
+
+		this.get('list')[2].draw(context, time);
+
 		context.restore();
 
 		context.beginPath();
 		context.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
 		context.stroke();
 
+		this.get('list')[1].draw(context, time);
 
-		this.get('list')[1].draw(context);
+		that = this;
 
-		window.requestAnimationFrame(this.drawSystem(context));
+		/*Ember.run(function(){
+			that.drawSystem(context);
+		})*/
+
+		window.requestAnimationFrame(function()
+		{
+			that.drawSystem(context);
+		});
 
 	}
 

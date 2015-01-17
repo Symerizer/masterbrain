@@ -1,9 +1,9 @@
-App.Planet = Ember.Object.extend({
+App.NaturalSatellite = Ember.Object.extend({
 
 	positionX: 0,
 	positionY: 0,
-  radius: 0,
-  image: null,
+  	radius: 0,
+  	image: null,
 
 	init: function()
 	{
@@ -20,10 +20,12 @@ App.Planet = Ember.Object.extend({
 
   	draw: function(context, time)
   	{
-      context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
-      context.translate(105,0);
-      context.fillRect(0,-12,50,24); // Shadow
-      context.drawImage(this.get('image'),-12,-12);
+		context.save();
+		context.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+		context.translate(0,28.5);
+		context.drawImage(this.get('image'),-3.5,-3.5);
+		context.restore();
+
   	}
 
 })

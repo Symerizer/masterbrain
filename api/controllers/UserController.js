@@ -30,7 +30,7 @@ module.exports = {
 					User.create({email: req.param('email'), password: req.param('password'), nickname: req.param('nickname')}, function newUser(err, newUser){
 						if(!err)
 						{
-							req.session.user = newUser;
+							req.session.user = newUser.id;
 							res.redirect('/');
 							sails.sockets.broadcast('user','StoreSocket',{action: 'create', model : 'user', data : [newUser.toJSON()]}, req.socket);
 						}
@@ -80,7 +80,7 @@ module.exports = {
 								{
 									if(!err)
 									{
-										req.session.user = updateUser[0];
+										req.session.user = updateUser[0].id;
 										sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
 										res.view('homepage');
 									}
@@ -125,7 +125,6 @@ module.exports = {
 			{
 				if(!err)
 				{
-					req.session.user = updateUser[0];
 					sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, req.socket);
 					res.json(updateUser[0]);
 				}

@@ -1,29 +1,36 @@
-App.Planet = Ember.Object.extend({
+App.Planet = App.AstronomicalObject.extend({
 
-	positionX: 0,
-	positionY: 0,
-  radius: 0,
-  image: null,
+  listNaturalSatellite : [],
+  Mycontext : null,
 
-	init: function()
-	{
-    var tmpImage = new Image();
-    tmpImage.src = this.get('imgUrl');
-    this.set('image', tmpImage);
+  init: function()
+  {
+    this._super();
   },
-
-  	/*setPosition: function(x,y)
-  	{
-  		this.set('positionX',x);
-  		this.set('positionY',y);
-  	},*/
 
   	draw: function(context, time)
   	{
-      context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
-      context.translate(105,0);
+      context.save();
+      var tmp = this.calculRotate(time);
+      context.rotate(tmp);
+      context.translate(this.get('distance'),0);
       context.fillRect(0,-12,50,24); // Shadow
-      context.drawImage(this.get('image'),-12,-12);
-  	}
+      context.rotate( ((2*Math.PI)/2)*time.getSeconds() + ((2*Math.PI)/2000)*time.getMilliseconds() );
+      this._super(context, time);
+
+      for (i = 0; i < this.get('listNaturalSatellite').length; i++)
+      {
+        this.get('listNaturalSatellite')[i].draw(context, time);
+      }
+
+      this.set('Mycontext', tmp);
+
+      context.restore();
+
+      context.beginPath();
+      context.arc(0,0,this.get('distance'),0,Math.PI*2,false); // Earth orbit
+      context.stroke();
+
+  	},
 
 })

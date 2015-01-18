@@ -63,7 +63,7 @@ module.exports.sockets = {
       this.chrono = setTimeout(function(){
         if(!that.returnUser)
         {
-          User.update(session.user.id, {online: false}, function updateUser(err, updateUser)
+          User.update(session.user, {online: false}, function updateUser(err, updateUser)
           {
             if(!err)
             {

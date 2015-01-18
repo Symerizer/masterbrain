@@ -20,12 +20,6 @@ App.Star = Ember.Object.extend({
 
   	draw: function(context, time)
   	{
-      /*var time = new Date();
-      context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
-      context.translate(105,0);
-      context.fillRect(0,-12,50,24); // Shadow
-      context.drawImage(this.get('image'),-12,-12);*/
-
       context.drawImage(this.get('image'),0,0,300,300);
   	}
 

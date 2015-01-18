@@ -1,31 +1,23 @@
-App.NaturalSatellite = Ember.Object.extend({
+App.NaturalSatellite = App.AstronomicalObject.extend({
 
-	positionX: 0,
-	positionY: 0,
-  	radius: 0,
-  	image: null,
-
-	init: function()
-	{
-    var tmpImage = new Image();
-    tmpImage.src = this.get('imgUrl');
-    this.set('image', tmpImage);
+  init: function()
+  {
+    this._super();
   },
 
-  	/*setPosition: function(x,y)
-  	{
-  		this.set('positionX',x);
-  		this.set('positionY',y);
-  	},*/
+	draw: function(context, time)
+	{
 
-  	draw: function(context, time)
-  	{
-		context.save();
-		context.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
-		context.translate(0,28.5);
-		context.drawImage(this.get('image'),-3.5,-3.5);
-		context.restore();
+    context.save();
+    context.rotate( this.calculRotate(time) + ((Math.PI * 180) / 180));
+    context.translate(this.get('distance'),0);
+      //context.fillRect(24,12,50,24); // Shadow
+    this._super(context, time);
+    context.restore();
 
-  	}
+    context.beginPath();
+    context.arc(0,0,this.get('distance')+2,0,Math.PI*2,false);
+    context.stroke();
+	}
 
 })

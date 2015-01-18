@@ -150,7 +150,7 @@ module.exports = {
 	{
 		if (req.session.user != null)
 		{
-			User.update(req.session.user.id, {online: false}, function updateUser(err, updateUser)
+			User.update(req.session.user, {online: false}, function updateUser(err, updateUser)
 			{
 				if(!err)
 				{

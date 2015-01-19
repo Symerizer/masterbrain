@@ -107,11 +107,16 @@ div:focus, input:focus{
 	ul{
 		list-style-type: none;
 		padding-left: 0;
-		font-size: 1.3em;
+		font-size: 1.5em;
 		text-align: center;
+		margin:0 auto;
+		position:relative;
+		top:25%;
 
 		li{
 			display:inline;
+			margin-right:5px;
+			margin-left:5px;
 		}
 	}
 	background-color: #747E80;
@@ -156,7 +161,33 @@ div:focus, input:focus{
 
 }
 
+.spc-comm{
+	position:relative;
+	width:100%;
+}
+.spc-rooms{
+	background-color: rgba(48, 42, 30, 0.2);
+	position: absolute;
+	top: 0px;
+	left: 95%;
+	width: 5%;
+	height: 30px;
+	border-top: 2px solid rgba(67, 83, 101, 0.7);
+	border-bottom: 2px solid rgba(67, 83, 101, 0.7);
+
+  -webkit-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -moz-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -o-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -ms-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+ 	transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+}
+.spc-rooms:hover{
+	left: 80%;
+	width: 20%;
+	height: 260px;
+}
 .spc-chatboxes{
+	width:100%;
 	.spc-title{
 		background-color: rgba(48,42,30,0.2);
 		height: 30px;

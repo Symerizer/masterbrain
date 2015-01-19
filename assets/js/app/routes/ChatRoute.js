@@ -2,9 +2,21 @@ App.ChatsRoute = Ember.Route.extend({
 	activate: function() {
 		var that = this;
 		io.socket.on('sendMessage', function(data) {
-			$('.spc-messages').append("<span class='chat-nickname'>" + data.nickname + "</span>:&nbsp;");
-			$('.spc-messages').append("<span class='chat-message'>" + data.message + "</span><br/>");
-			$('.spc-messages').scrollTop($('.spc-messages')[0].scrollHeight);
+			var spcmessage = $('.spc-messages');
+			var jsp = spcmessage.data('jsp');
+			var atBottom = jsp.getPercentScrolledY() == 1;
+			var scrollStart = jsp.getIsScrollableV();
+
+			jsp.getContentPane().append("<span class='chat-nickname'>" + data.nickname + "</span>:&nbsp;");
+			jsp.getContentPane().append("<span class='chat-message'>" + data.message + "</span><br/>");
+			jsp.reinitialise();
+
+			var scrollEnd = jsp.getIsScrollableV();
+
+			// Vérifier si le scroll est en bas avant de le descendre a la nouvelle position
+			if (atBottom || (scrollStart != scrollEnd))
+				jsp.scrollToBottom();
+
 			that.controller.messages.pushObject(data);
 		});
 	},

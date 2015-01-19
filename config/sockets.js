@@ -12,6 +12,10 @@
 
 module.exports.sockets = {
 
+  chrono: null,
+  returnUser: false,
+
+
   /***************************************************************************
   *                                                                          *
   * This custom onConnect function will be run each time AFTER a new socket  *
@@ -24,6 +28,12 @@ module.exports.sockets = {
   onConnect: function(session, socket) {
 
     // By default, do nothing.
+
+    if (session.user)
+    {
+      this.returnUser = true;
+    }
+
   },
 
 
@@ -36,6 +46,36 @@ module.exports.sockets = {
   onDisconnect: function(session, socket) {
 
     // By default: do nothing.
+
+    if(session.user != null)
+    {
+
+      that = this;
+
+      this.returnUser = false;
+
+
+      if (this.chrono != null)
+      {
+        clearTimeout(this.chrono);
+      }
+
+      this.chrono = setTimeout(function(){
+        if(!that.returnUser)
+        {
+          User.update(session.user, {online: false}, function updateUser(err, updateUser)
+          {
+            if(!err)
+            {
+              session.user = null;
+              session.save();
+              sails.sockets.broadcast('user','StoreSocket',{action: 'update', model : 'user', data : [updateUser[0].toJSON()]}, socket);
+            }
+          });
+        }
+      },10000);
+    }
+
   },
 
 

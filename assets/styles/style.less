@@ -11,8 +11,78 @@ html, body{
 	background-image:url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-22-a-full_jpg.jpg");
 	background-size:cover;
 }
+.jspVerticalBar .jspArrow{
+	height: 8px;
+}
+.jspArrowDown{
+	background: rgba(48,42,30,0.8);
+	background: -moz-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+	background: -webkit-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
+	border-radius: 0px 0px 10px 10px;
+}
+.jspArrowDown.jspDisabled{
+	background: rgba(48,42,30,0.8);
+	background: -moz-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -webkit-gradient(left bottom, left top, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+	background: -webkit-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -o-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -ms-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: linear-gradient(to top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
+}
+.jspArrowUp{
+	background: rgba(48,42,30,0.8);
+	background: -moz-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -webkit-gradient(left bottom, left top, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+	background: -webkit-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -o-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -ms-linear-gradient(bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: linear-gradient(to top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
+	border-radius: 10px 10px 0px 0px;
+}
+.jspArrowUp.jspDisabled{
+	background: rgba(48,42,30,0.8);
+	background: -moz-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(48,42,30,0.8)), color-stop(100%, rgba(89,127,163,0.8)));
+	background: -webkit-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(48,42,30,0.8) 0%, rgba(89,127,163,0.8) 100%);
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#302a1e', endColorstr='#597fa3', GradientType=0 )";
+}
 
-input:focus{
+
+.jspVerticalBar{
+	width:10px;
+	background:transparent;
+}
+.jspTrack{
+	background:transparent;
+}
+.jspDrag{
+    /* Adds shadow to the bottom of the bar */
+    -webkit-box-shadow: 0px 0px 3px 0px #000000;
+    -moz-box-shadow: 0px 0px 3px 0px #000000;
+    -ms-box-shadow: 0px 0px 3px 0px #000000;
+    box-shadow: 0px 0px 3px 0px #000000;
+    /* Adds the transparent background */
+    background: rgba(89,127,163,0.8);
+		background: -moz-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(89,127,163,0.8)), color-stop(100%, rgba(48,42,30,0.8)));
+		background: -webkit-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -o-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: -ms-radial-gradient(center, ellipse cover, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		background: radial-gradient(ellipse at center, rgba(89,127,163,0.8) 0%, rgba(48,42,30,0.8) 100%);
+		filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#597fa3', endColorstr='#302a1e', GradientType=1 )";
+}
+
+div:focus, input:focus{
 	outline:none;
 }
 
@@ -37,11 +107,16 @@ input:focus{
 	ul{
 		list-style-type: none;
 		padding-left: 0;
-		font-size: 1.3em;
+		font-size: 1.5em;
 		text-align: center;
+		margin:0 auto;
+		position:relative;
+		top:25%;
 
 		li{
 			display:inline;
+			margin-right:5px;
+			margin-left:5px;
 		}
 	}
 	background-color: #747E80;
@@ -86,7 +161,33 @@ input:focus{
 
 }
 
+.spc-comm{
+	position:relative;
+	width:100%;
+}
+.spc-rooms{
+	background-color: rgba(48, 42, 30, 0.2);
+	position: absolute;
+	top: 0px;
+	left: 95%;
+	width: 5%;
+	height: 30px;
+	border-top: 2px solid rgba(67, 83, 101, 0.7);
+	border-bottom: 2px solid rgba(67, 83, 101, 0.7);
+
+  -webkit-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -moz-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -o-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+  -ms-transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+ 	transition: height 0.5s ease-in 0s, width 0.5s ease-out 0s, left 0.5s ease-out 0s;
+}
+.spc-rooms:hover{
+	left: 80%;
+	width: 20%;
+	height: 260px;
+}
 .spc-chatboxes{
+	width:100%;
 	.spc-title{
 		background-color: rgba(48,42,30,0.2);
 		height: 30px;
@@ -145,5 +246,5 @@ canvas
 
 .systems{
 	border: none;
-	background-image: url('../images/starsbg.png');
+	//background-image: url('../images/starsbg.png');
 }

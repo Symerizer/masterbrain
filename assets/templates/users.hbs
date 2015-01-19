@@ -1,6 +1,6 @@
 <ul>
 	{{#each user in controller}}
-  		<li {{action "selectUser" user}}>{{user.nickname}} </li>
+  		<li {{action "selectUser" user}}>{{#if user.online}}<span style="color:green;width:50px">  Online {{else}}<span style="color:red;width:50px"> Offline {{/if}}</span> : {{user.nickname}}</li>
 	{{/each}}
 </ul>
 
@@ -10,6 +10,6 @@
 {{#if Edit}}
 	<form {{action "updateUser" on="submit"}}>
 		nickname : {{input name="nickname" value=UserEditParam.nickname}}<br/>
-		{{input type="submit" value="save"}} <button {{action "deleteUser" }}>delete</button>
+		{{input type="submit" value="save"}}
 	</form>
 {{/if}}

@@ -18,8 +18,14 @@ module.exports = {
 		nickname: { type: 'string', required: true, columnName: 'nickname', unique: true },
 		online: { type: 'boolean', columnName: 'online', defaultsTo: true},
 
+		friends: {
+            collection: 'user',
+            dominant:true
+        },
+
 		spaceship: { collection: 'User-Spaceship', via: 'spaceship' },
 		system: {model: 'system'},
+
 		
 		toJSON: function()
 		{

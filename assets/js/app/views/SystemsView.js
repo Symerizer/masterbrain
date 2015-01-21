@@ -75,6 +75,7 @@ App.SystemsView = Ember.View.extend({
 			minutes : 0,
 			seconds : 60,
 			milliseconds : 60000,
+			name : 'Planete de marde',
 			listNaturalSatellite : new Array(NaturalSatelliteMoon)
 		});
 
@@ -129,6 +130,13 @@ App.SystemsView = Ember.View.extend({
 		context.arc(150,150,50,0,Math.PI*2,false); // Earth orbit
 		context.stroke();*/
 
+
+		context.rect(this.get('list')[0].center.pointX - 12,this.get('list')[0].center.pointY - 12,24,24);
+		context.stroke();
+
+		context.rect(this.get('list')[1].center.pointX - 25,this.get('list')[1].center.pointY - 25,50,50);
+		context.stroke();
+
 		this.get('list')[1].draw(context, time);
 		that = this;
 
@@ -147,11 +155,25 @@ App.SystemsView = Ember.View.extend({
 	{
 
 		//if (evt.target.id == "canvas" && (150 + 105 -12 + this.get('list')[0].Mycontext))
-			console.log((105 * Math.cos(this.get('list')[0].Mycontext)) + 150 -12);
-			console.log((105 * Math.sin(this.get('list')[0].Mycontext)) + 150 - 12);
+			//console.log((105 * Math.cos(this.get('list')[0].Mycontext)) + 150 -12);
+			//console.log((105 * Math.sin(this.get('list')[0].Mycontext)) + 150 - 12);
 			//console.log(150 -12 + Math.sin(this.get('list')[0].Mycontext));
 			//console.log(this.get('list')[0].Mycontext);
 			//console.log(180 * this.get('list')[0].Mycontext / Math.PI);
+
+			//console.log(evt);
+
+		if (evt.target.id == "canvas")
+		{
+			for (var i = 0; i < this.get('list').length; i++)
+			{
+				//console.log(evt.offsetY)
+				if (this.get('list')[i].hitbox({positionX : evt.offsetX, positionY : evt.offsetY}))
+				{
+					console.log('nice');
+				}
+			}
+		}
 
 
   	},

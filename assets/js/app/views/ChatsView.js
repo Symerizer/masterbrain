@@ -9,8 +9,8 @@ App.ChatsView = Ember.View.extend({
 		var scrollStart = jsp.getIsScrollableV();
 		for (var i = 0; i < this.controller.messages.length; i++) {
 			jsp.getContentPane().append("<span class='chat-nickname'>" + this.controller.messages[i].nickname + "</span>:&nbsp;");
-			jsp.getContentPane().append("<span class='chat-message'>" + this.controller.messages[i].message + "</span><br/>");
-			jsp.reinitialise();
+			jsp.getContentPane().append("<span class='chat-message'>" + this.controller.messages[i].message + "</span><br/>");	
 		};
+		jsp.reinitialise();
 	}
 });

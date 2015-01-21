@@ -1,7 +1,7 @@
 App.Planet = App.AstronomicalObject.extend({
 
   listNaturalSatellite : [],
-  Mycontext : null,
+  center : null,
 
   init: function()
   {
@@ -23,7 +23,11 @@ App.Planet = App.AstronomicalObject.extend({
         this.get('listNaturalSatellite')[i].draw(context, time);
       }
 
-      this.set('Mycontext', tmp);
+      var tmpcenter = { pointX : (105 * Math.cos(tmp)) + 150,
+                        pointY : (105 * Math.sin(tmp)) + 150
+                      };
+
+      this.set('center', tmpcenter);
 
       context.restore();
 
@@ -32,5 +36,14 @@ App.Planet = App.AstronomicalObject.extend({
       context.stroke();
 
   	},
+
+    hitbox: function(point)
+    {
+
+      if (Math.sqrt(Math.pow(point.positionX - this.get('center').pointX,2) + Math.pow(point.positionY - this.get('center').pointY,2)) < (this.get('width')/2))
+        return true;
+      else
+        return false;
+    }
 
 })
